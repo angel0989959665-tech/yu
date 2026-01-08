@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Toast&Co. | 顧客評論</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="final.css">
+
+    <style>
+        .reviews-main {
+            /* 修正：上方已加入 height: 120px 的 div 間隔，故將 padding-top 設為小值或 0 */
+            padding-top: 20px;
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        /* 顧客評論頁面的主標題 */
+        .reviews-main h1 {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 50px;
+            color: #454545;
+        }
+
+        /* 使用 .customer-reviews-section 容器來承載所有評論 */
+        .reviews-container {
+            padding: 0;
+            /* 移除原本在 detail 頁的內邊距 */
+            border-top: none;
+            /* 移除原本在 detail 頁的分隔線 */
+        }
+
+        .rating-summary {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .rating-summary .stars {
+            color: gold;
+            font-size: 3em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .rating-summary p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="navbar">
+            <div class="nav-left nav-icons">
+                <a href="login.html" id="memberArea"><i class="fa-regular fa-user icon"></i></a>
+                <i class="fa-solid fa-magnifying-glass icon" id="searchIcon"></i>
+            </div>
+
+            <div class="logo">
+                <img src="images/logoo.png" alt="Toast&Co logo">
+                <a href="index.html">Toast&Co.</a>
+            </div>
+
+            <div class="nav-right nav-icons">
+                <a href="cart.html"><i class="fa-solid fa-cart-shopping icon"></i></a>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="about-us.html">關於我們</a>
+            <a href="goods.html">商品列表</a>
+            <a href="limited.html">期間限定</a>
+            <a href="feedback.html">顧客回饋</a>
+            <a href="contact.html">聯絡資訊</a>
+            
+        </nav>
+        <input type="text" id="searchInput" placeholder="搜尋商品...">
+
+        <div style="height: 120px;"></div>
+
+    </header>
+
+    <div style="height: 120px;"></div>
+
+    <main class="reviews-main">
+        <h1>顧客真心回饋</h1>
+
+        <section class="rating-summary">
+            <span class="stars">★★★★★</span>
+            <h2>顧客評論</h2>
+            <p>感謝顧客的肯定與支持！</p>
+        </section>
+
+        <section class="customer-reviews-section reviews-container">
+            <article class="review-item">
+                <div class="review-header">
+                    <h3 class="user-name">王小美 </h3>
+                    <span class="rating-stars">★★★★★</span>
+                </div>
+                <div class="review-content-box">
+                    「回購好幾次了！經典吐司的口感真的非常柔軟，單吃就很美味，烤過搭配果醬更是絕配。家裡小朋友超愛！」
+                </div>
+            </article>
+
+            <article class="review-item">
+                <div class="review-header">
+                    <h3 class="user-name">陳大山</h3>
+                    <span class="rating-stars">★★★★☆</span>
+                </div>
+                <div class="review-content-box">
+                    「Toast&co.的土司口味獨特，味道好吃、用料實在!」
+                </div>
+            </article>
+
+            <article class="review-item">
+                <div class="review-header">
+                    <h3 class="user-name">李同學</h3>
+                    <span class="rating-stars">★★★★★</span>
+                </div>
+                <div class="review-content-box">
+                    「長年購買的忠實粉絲!讓我們家願意長年回購的動力在於豐富的口味和始終如一的高品質，推推！」
+                </div>
+            </article>
+
+            <article class="review-item">
+                <div class="review-header">
+                    <h3 class="user-name">匿名顧客 (關於：購物體驗)</h3>
+                    <span class="rating-stars">★★★★★</span>
+                </div>
+                <div class="review-content-box">
+                    「網站訂購流程非常順暢，客服回覆也很快，吐司包裝完整，送到手上還是很新鮮！很棒的購物體驗。」
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>Toast&Co.</p>
+                <br>
+                <img height="100" src="images/logoo.png" alt="logo">
+            </div>
+
+            <div class="footer-middle">
+                <h3>公司資訊</h3>
+                <p>
+                    <a href="mailto:0522pamela@gmail.com?subject=客服詢問"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/share/1brKSqFVAn/?mibextid=wwXIfr"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/unaizla_?igsh=NTB3N2s4Nzc0N3Nk"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="tel:0938069567"><i class="fa-solid fa-phone"></i></a>
+                </p>
+                <p>公司名稱：好市吐司股份有限公司</p>
+                <p>電話：0941016522</p>
+                <p>地址：320桃園市中壢區中原路200號</p>
+                <p>服務時間：周一至周六 08：00~17:00</p>
+            </div>
+
+            <div class="footer-right">
+
+                <div class="footer-group">
+                    <h3>常見問題</h3>
+                    <a href="faq.html#order">訂購須知</a>
+                    <a href="faq.html#qa">Q&A</a>
+                </div>
+
+                <div class="footer-group">
+                    <h3>購物說明</h3>
+                    <a href="faq.html#storage">保存方式</a>
+                    <a href="faq.html#shipping">運送方式</a>
+                    <a href="faq.html#payment">付款方式</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/header-auth.js"></script>
+
+<script src="header-auth.js"></script>
+
+</body>
+
+</html>

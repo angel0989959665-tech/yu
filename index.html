@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Toast&Co.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="final.css">
+</head>
+
+<body>
+
+    <!-- ===== 導覽列 ===== -->
+    <div class="navbar">
+
+        <!-- 左側 icons（放這裡） -->
+        <div class="nav-left nav-icons">
+            <a href="login.html" id="memberArea">
+                <i class="fa-regular fa-user icon"></i>
+            </a>
+
+            <i class="fa-solid fa-magnifying-glass icon" id="searchIcon"></i>
+        </div>
+
+        <!-- 中間 Logo -->
+        <div class="logo">
+            <img src="images/logoo.png" alt="Toast&Co logo">
+            <a href="index.html">Toast&Co.</a>
+        </div>
+
+        <!-- 右側 icons -->
+        <div class="nav-right nav-icons">
+            <a href="cart.html">
+                <i class="fa-solid fa-cart-shopping icon"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- 下方選單 -->
+    <nav class="menu">
+        <a href="about-us.html">關於我們</a>
+        <a href="goods.html">商品列表</a>
+        <a href="limited.html">期間限定</a>
+        <a href="feedback.html">顧客回饋</a>
+        <a href="contact.html">聯絡資訊</a>
+    </nav>
+
+    <!-- 🔍 搜尋欄（記得放在 header 裡，但不在 navbar 裡） -->
+    <input type="text" id="searchInput" placeholder="搜尋商品...">
+    </header>
+
+    <!-- 首頁主視覺圖案 -->
+    <section class="hero">
+        <div class="hero-left">
+            <img src="images/home-picture.png" alt="Toast&Co 日常吐司">
+        </div>
+
+        <div class="hero-right">
+            <p class="hero-tag">SIMPLE · WARM · NATURAL</p>
+            <h1>一片吐司的<br>日常溫度</h1>
+            <a href="#hot-products" class="hero-btn">查看熱門商品</a>
+        </div>
+    </section>
+    <!-- ===== Banner ===== -->
+    <section class="banner home-banner">
+        <button class="arrow left" id="prevBtn">❮</button>
+
+        <a id="home-banner-link" href="#">
+            <img id="home-banner-img" src="images/home-banner1.png" alt="">
+        </a>
+
+        <button class="arrow right" id="nextBtn">❯</button>
+        
+        <div class="dots" id="banner-dots"></div>
+
+    </section>
+
+    <div class="banner-dots" id="bannerDots"></div>
+
+    <script>
+        const bannerImg  = document.getElementById("home-banner-img");
+        const bannerLink = document.getElementById("home-banner-link");
+        const nextBtn    = document.getElementById("nextBtn");
+        const prevBtn    = document.getElementById("prevBtn");
+        const dotsWrap   = document.getElementById("bannerDots");
+    
+        const banners = [
+            { img: "images/home-banner1.png", link: "goods.html", clickable: true },
+            { img: "images/home-banner4.png", link: "limited.html", clickable: true },
+            { img: "images/home-banner3.png", clickable: false }
+        ];
+    
+        let index = 0;
+        let timer;
+    
+        /* ===== 建立圓點 ===== */
+        banners.forEach((_, i) => {
+            const dot = document.createElement("span");
+            dot.addEventListener("click", () => {
+                index = i;
+                updateBanner();
+                resetAutoSlide();
+            });
+            dotsWrap.appendChild(dot);
+        });
+    
+        const dots = dotsWrap.querySelectorAll("span");
+    
+        /* ===== 更新圖片 / 連結 / 圓點 ===== */
+        function updateBanner() {
+            bannerImg.src = banners[index].img;
+    
+            if (banners[index].clickable) {
+                bannerLink.href = banners[index].link;
+                bannerLink.style.pointerEvents = "auto";
+                bannerLink.style.cursor = "pointer";
+            } else {
+                bannerLink.removeAttribute("href");
+                bannerLink.style.pointerEvents = "none";
+                bannerLink.style.cursor = "default";
+            }
+    
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[index].classList.add("active");
+        }
+    
+        /* ===== 下一張 / 上一張 ===== */
+        function nextSlide() {
+            index = (index + 1) % banners.length;
+            updateBanner();
+        }
+    
+        function prevSlide() {
+            index = (index - 1 + banners.length) % banners.length;
+            updateBanner();
+        }
+    
+        /* ===== 自動輪播（重置） ===== */
+        function resetAutoSlide() {
+            clearInterval(timer);
+            timer = setInterval(nextSlide, 5000);
+        }
+    
+        nextBtn.addEventListener("click", () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+    
+        prevBtn.addEventListener("click", () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+    
+        /* ===== 初始化 ===== */
+        updateBanner();
+        timer = setInterval(nextSlide, 5000);
+    </script>
+
+    <!-- ===== 熱門商品 ===== -->
+    <section class="products">
+        <h2 id="hot-products">熱門商品</h2>
+
+        <div class="product-hot">
+            <article class="product-card">
+                <a href="strawberry.html">
+                    <img src="flavor images/strawberry.png" alt="草莓鮮奶油厚片">
+                    <h3>草莓鮮奶油厚片</h3>
+                    <p>NT$ 150</p>
+                    <div class="rating-stars">★★★★★</div>
+                </a>
+            </article>
+
+            <article class="product-card">
+                <a href="garlic.html">
+                    <img src="flavor images/garlic.png" alt="蒜香奶油厚片">
+                    <h3>蒜香奶油厚片</h3>
+                    <p>NT$ 80</p>
+                    <div class="rating-stars">★★★★★</div>
+                </a>
+            </article>
+
+            <article class="product-card">
+                <a href="grey.html">
+                    <img src="flavor images/grey.png" alt="伯爵紅茶厚片">
+                    <h3>伯爵紅茶吐司</h3>
+                    <p>NT$ 120</p>
+                    <div class="rating-stars">★★★★★</div>
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <div class="more-products">
+        <a href="goods.html" class="more-btn">查看更多商品</a>
+    </div>
+    
+    <!-- ===== 搜尋 ===== -->
+    <script>
+        const searchIcon = document.getElementById("searchIcon");
+        const searchInput = document.getElementById("searchInput");
+
+        if (searchIcon && searchInput) {
+            // 點放大鏡 → 顯示 / 隱藏搜尋欄
+            searchIcon.addEventListener("click", () => {
+                searchInput.style.display =
+                    searchInput.style.display === "block"
+                        ? "none"
+                        : "block";
+
+                searchInput.focus();
+            });
+
+            // Enter → 跳到商品頁搜尋
+            searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    const keyword = searchInput.value.trim();
+                    if (keyword !== "") {
+                        window.location.href =
+                            `goods.html?search=${encodeURIComponent(keyword)}`;
+                    }
+                }
+            });
+        }
+
+        // 頁面載入時執行檢查
+        window.addEventListener('DOMContentLoaded', checkLoginStatusAndUpateHeader);
+    </script>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>Toast&Co.</p>
+                <br>
+                <img height="100" src="images/logoo.png" alt="logo">
+            </div>
+
+            <div class="footer-middle">
+                <h3>公司資訊</h3>
+                <p>
+                    <a href="mailto:0522pamela@gmail.com?subject=客服詢問"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/share/1brKSqFVAn/?mibextid=wwXIfr"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/unaizla_?igsh=NTB3N2s4Nzc0N3Nk"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="tel:0938069567"><i class="fa-solid fa-phone"></i></a>
+                </p>
+                <p>公司名稱：好市吐司股份有限公司</p>
+                <p>電話：0941016522</p>
+                <p>地址：320桃園市中壢區中原路200號</p>
+                <p>服務時間：周一至周六 08：00~17:00</p>
+            </div>
+
+            <div class="footer-right">
+
+                <div class="footer-group">
+                    <h3>常見問題</h3>
+                    <a href="faq.html#order">訂購須知</a>
+                    <a href="faq.html#qa">Q&A</a>
+                </div>
+
+                <div class="footer-group">
+                    <h3>購物說明</h3>
+                    <a href="faq.html#storage">保存方式</a>
+                    <a href="faq.html#shipping">運送方式</a>
+                    <a href="faq.html#payment">付款方式</a>
+                </div>
+
+            </div>
+        </div>
+
+        <p>© 2025 Ting</p>
+
+    </footer>
+    <script src="header-auth.js"></script>
+
+</body>
+
+</html>
